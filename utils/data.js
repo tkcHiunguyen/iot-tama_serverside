@@ -27,6 +27,9 @@ async function checkAndSendData() {
         } catch (error) {
             console.error('Failed to process data:', error);
         }
+        finally {
+            lock_connection = false
+        }
     }
 
 }
@@ -60,9 +63,7 @@ async function sendToAppScript(data) {
             console.error('Response Data:', error.response.data); // Dữ liệu lỗi
         }
     }
-    finally {
-        lock_connection = false
-    }
+
 }
 async function deleteSentData(uuidList) {
     try {
