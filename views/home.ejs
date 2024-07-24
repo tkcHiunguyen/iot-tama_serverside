@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8" />
+          <meta
+               name="viewport"
+               content="width=device-width, initial-scale=1.0"
+          />
+          <title>Document</title>
+          <!-- <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script> -->
+     </head>
+     <body>
+          <h1>âfasfasfasfsaf</h1>
+     </body>
+     <script src="/socket.io/socket.io.js"></script>
+     <script>
+          const socket = io();
+          function laplai() {
+               console.log("start emit");
+               socket.emit("hello", "hellomessage");
+          }
+          setInterval(laplai, 5000);
+          socket.on("esp", (data) => {
+               console.log(data);
+          });
+     </script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentication</title>
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="card-switch">
+        <label class="switch">
+          <input class="toggle" type="checkbox" />
+          <span class="slider"></span>
+          <span class="card-side"></span>
+          <div class="flip-card__inner">
+            <div class="flip-card__front">
+              <div class="title">Log in</div>
+              <% if (typeof loginError !== 'undefined') { %>
+              <div class="error-message"><%= loginError %></div>
+              <% } %>
+              <form method="POST" action="/auth/login" class="flip-card__form">
+                <input
+                  type="text"
+                  placeholder="Username"
+                  name="username_login"
+                  class="flip-card__input"
+                  required
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password_login"
+                  class="flip-card__input"
+                  required
+                />
+                <button class="flip-card__btn">Let`s go!</button>
+              </form>
+            </div>
+            <div class="flip-card__back">
+              <div class="title">Sign up</div>
+              <% if (typeof registerError !== 'undefined') { %>
+              <div class="error-message"><%= registerError %></div>
+              <% } %>
+              <form
+                method="post"
+                action="/auth/register"
+                class="flip-card__form"
+              >
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  class="flip-card__input"
+                  required
+                />
+                <input
+                  type="text"
+                  placeholder="Username"
+                  name="username_register"
+                  class="flip-card__input"
+                  required
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password_register"
+                  class="flip-card__input"
+                  required
+                />
+                <button class="flip-card__btn">Confirm!</button>
+              </form>
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </body>
+</html>

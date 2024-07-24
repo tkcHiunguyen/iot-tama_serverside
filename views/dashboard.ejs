@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    /> -->
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
+     <script src="/js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/dashboard.css">
+  <body>
+    <div class="sidebar"></div>
+    <div class="content">
+      <div class="header-wrapper">
+        <div class="header-title">
+          <span> Welcome  <%= username %>!</span>
+          <h2>Dashboard</h2>
+        </div>
+        <div class="user-info">
+          <div class="search-box">
+            <i class="fa solid fa-search"></i>
+            <input type="text" placeholder="search">
+          </div>
+          <div class="user-image">
+            <img class="avatar" src="/img/tama.png" alt="avatar" >
+          </div>
+         
+
+        </div>
+      </div>
+       <div class="project">
+            <div class="new-project">
+              <div class="title-project">
+                <span>New project</span>
+              </div>
+              <div class="contain-project">
+                <img class="project" src="/img/tama.png" alt="project">
+                <!-- <i class="fa-solid fa-plus"></i>
+                <i class="fa-solid fa-trash"></i>
+                <i class="fa-solid fa-pen"></i> -->
+              </div>
+            </div>
+          </div>
+    </div>
+    <script>
+      const list_sidebar = [
+        "Dashboard",
+        "Profile",
+        "Setting",
+        "Career",
+        "Log out",
+      ];
+      const list_sidebar_item = [
+        "fas fa-tachometer-alt",
+        "fas fa-user",
+        "fas fa-gear",
+        "fas fa-briefcase",
+        "fas fa-sign-out-alt",
+      ];
+      const list_sidebar_href = [
+        "dashboard",
+        "profile",
+        "setting",
+        "career",
+        "logout",
+      ];
+      const logo=$('.sidebar').append($("<div></div>").addClass("logo"))
+      const a = $(".sidebar").append($("<ul>").addClass("menu"));
+      list_sidebar.forEach((item, index) => {
+        $(".menu").append(
+          `<li><a href=${list_sidebar_href[index]} ><i class="${list_sidebar_item[index]}"></i> <span>${item}</span></a></li>`
+        );
+      });
+
+      $(".menu li:contains('Profile')").addClass("active")
+      $(".menu li:contains('Log out')").addClass("logout")
+    </script>
+  </body>
+</html>
