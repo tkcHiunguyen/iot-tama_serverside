@@ -17,7 +17,7 @@ module.exports = (io) => {
                 let nowdate = now.format("MM-DD-YYYY HH:mm:ss");
                 ESPData.nowdate = nowdate;
                 let filePath = 'data_log.txt';
-                console.log('Received data:', ESPData);
+                // console.log('Received data:', ESPData);
 
                 let storageData = {};
                 storageData.code = ESPData.code

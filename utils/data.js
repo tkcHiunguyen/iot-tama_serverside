@@ -7,6 +7,7 @@ var lock_connection = false
 var uuidAppScript
 var dataFrame
 async function checkAndSendData() {
+    console.log("start checking:", lock_connection)
     if (lock_connection == false) {
         try {
             lock_connection = true
@@ -51,9 +52,6 @@ async function sendToAppScript(data) {
             console.log("response not match!")
             console.log(response.data)
         }
-
-
-
     } catch (error) {
         // In ra lỗi nếu có
         console.error('Failed to send data:', error.message);
