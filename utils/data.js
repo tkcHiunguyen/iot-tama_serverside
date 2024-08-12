@@ -1,4 +1,4 @@
-const fs = require('fs-extra');
+const fs = require('fs-extra')
 const axios = require('axios')
 const { connection } = require('../DB')
 const { v4: uuidv4 } = require('uuid')

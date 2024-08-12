@@ -1,5 +1,6 @@
 const moment = require('moment');
-const { connection } = require("./DB")
+const { connection } = require("./DB");
+const { json } = require('express');
 
 
 module.exports = (io) => {
@@ -12,12 +13,16 @@ module.exports = (io) => {
 
         socket.on('readpzem', async (data) => {
             try {
-                let ESPData = JSON.parse(data);
+                let ESP = JSON.parse(data)
+                // console.log(ESP)
+                let device = ESP.device
+                let ESPData = ESP.data
+
                 let now = moment();
                 let nowdate = now.format("MM-DD-YYYY HH:mm:ss");
                 ESPData.nowdate = nowdate;
                 let filePath = 'data_log.txt';
-                // console.log('Received data:', ESPData);
+                // console.log('Received data:', device);
 
                 let storageData = {};
                 storageData.code = ESPData.code
@@ -26,9 +31,11 @@ module.exports = (io) => {
                 storageData.clienttime = ESPData.clienttime;
                 storageData.status = ESPData.status;
                 storageData.uuid = ESPData.uuid;
-
+                // console.log(storageData)
                 await saveToDatabase(storageData);
-                io.emit("check_uuid", ESPData.uuid);
+                io.emit("check_uuid" + device, ESPData.uuid);
+
+
             } catch (error) {
                 console.error('Failed to parse JSON:', error);
             }
