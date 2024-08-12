@@ -31,7 +31,7 @@ module.exports = (io) => {
                 storageData.clienttime = ESPData.clienttime;
                 storageData.status = ESPData.status;
                 storageData.uuid = ESPData.uuid;
-                // console.log(storageData)
+                console.log(storageData)
                 await saveToDatabase(storageData);
                 io.emit("check_uuid" + device, ESPData.uuid);
 
